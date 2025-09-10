@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -82,7 +83,7 @@ fun NewsArticlesListScreen(
             ) {
                 itemsIndexed(state.results) { _, item ->
                     ListItem(item, { navController.navigate(
-                        "${Screen.NewsArticleDetailsScreen.route}/${item.imageUrl?.encodeForRoute()}/${item.title}/${item.creator}/${item.description}/${item.link.encodeForRoute()}"
+                        "${Screen.NewsArticleDetailsScreen.route}/${item.imageUrl.orEmpty().encodeForRoute()}/${item.title}/${item.creator}/${item.description}/${item.link.encodeForRoute()}"
                     ) })
                 }
             }
@@ -96,7 +97,7 @@ fun ListItem(
     onClick: () -> Unit,
 ) {
     Row(
-        modifier = Modifier.clickable { onClick() },
+        modifier = Modifier.clickable { onClick() }.padding(8.dp),
         horizontalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         AsyncImage(
@@ -110,6 +111,7 @@ fun ListItem(
         ) {
             Text(
                 text = state.title,
+                maxLines = 1,
                 style = MaterialTheme.typography.titleSmall
             )
             Text(

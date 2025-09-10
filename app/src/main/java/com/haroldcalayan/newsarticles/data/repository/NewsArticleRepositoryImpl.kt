@@ -8,7 +8,6 @@ import timber.log.Timber
 class NewsArticleRepositoryImpl(private val apiService: ApiService) : NewsArticleRepository {
 
     override suspend fun getNewsArticle(category: String): NewsArticlesResponse {
-        Timber.d("getNewsArticle()")
         return apiService.getNewsArticles(category = category)
     }
 }

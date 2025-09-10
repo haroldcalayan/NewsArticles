@@ -4,6 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,33 +31,33 @@ fun NewsArticleDetailsScreen(
     val uriHandler = LocalUriHandler.current
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         AsyncImage(
             model = imageUrl,
             contentDescription = null,
-            modifier = Modifier.size(150.dp)
+            modifier = Modifier.fillMaxWidth()
         )
 
         Text(
             text = title,
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.titleLarge
         )
         Text(
             text = creator,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.titleSmall
         )
 
         Text(
             text = description,
-            style = MaterialTheme.typography.bodySmall
+            style = MaterialTheme.typography.bodyMedium
         )
         Text(
             modifier = Modifier.clickable { uriHandler.openUri(link) },
             text = link,
-            style = MaterialTheme.typography.labelLarge.copy(
+            style = MaterialTheme.typography.bodySmall.copy(
                 color = Color.Blue
             )
         )

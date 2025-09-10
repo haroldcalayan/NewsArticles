@@ -13,10 +13,4 @@ interface ApiService {
         @Query("language") language: String =  "en",
         @Query("category") category: String =  ""
     ): NewsArticlesResponse
-
-    @GET("/api/1/news/:id")
-    suspend fun getNewsArticleDetails() {
-
-    }
-
 }
